@@ -5,6 +5,7 @@ import {
     Alert
 } from 'react-native';
 
+// Components
 import Header from './components/header.component'
 import DrawPad from './components/drawPad.component'
 import Brushes from './components/brushes.component'
@@ -12,6 +13,7 @@ import Colors from './components/colors.component'
 
 import { Actions } from 'react-native-router-flux';
 
+// Data object for Brushes
 const brushesObject = [
     {
         renderWidth: 5,
@@ -27,6 +29,7 @@ const brushesObject = [
     }
 ]
 
+// Data object for Colors
 const colorsObject = [
     '#000000',
     '#32a852',
@@ -54,6 +57,7 @@ export default class DrawPadScene extends Component {
         };
     }
 
+    // Sets current stroke width for draw
     handleStrockWidth = (item) => {
         this.setState({
             currentStrokeWidth: item.actualStrokeWidth
@@ -68,6 +72,7 @@ export default class DrawPadScene extends Component {
         this.drawPad.redo();
     }
 
+    // Saves draw and refresh the Gallery scene
     save = async () => {
         await this.drawPad.save();
         Actions.pop();
@@ -78,12 +83,14 @@ export default class DrawPadScene extends Component {
         }, 100);
     }
 
+    // Sets current stroke colorfor draw
     changeColor = () => {
         this.setState({
             showColorWindow: true
         })
     }
 
+    // Sets current color for draw and hides color change UI
     handleColorClick = (color) => {
         this.setState({
             currentColor: color,

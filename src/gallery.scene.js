@@ -32,6 +32,7 @@ export default class Gallery extends Component {
         this.checkPermissionAndGetPhotos();
     }
 
+    // Check and fetch photos from the gallery
     checkPermissionAndGetPhotos = async () => {
         if (Platform.OS === 'ios') {
             const photos = await getPhotos(50)

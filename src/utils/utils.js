@@ -3,8 +3,8 @@ import {
 } from 'react-native';
 
 import CameraRoll from "@react-native-community/cameraroll";
-import { captureRef } from "react-native-view-shot";
 
+// Check for permission in Android
 export async function hasAndroidPermission(permission) {
     if (!permission) {
         throw "Permission missing"
@@ -19,6 +19,7 @@ export async function hasAndroidPermission(permission) {
     return status === 'granted';
 }
 
+// After checking for permission returns photos
 export async function getPhotos(numberOfPhotos) {
     if (hasAndroidPermission) {
         const photos = await CameraRoll.getPhotos({
